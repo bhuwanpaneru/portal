@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutComponent } from './components/about/about.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [Anonymous]},
   { path: 'contact', component: ContactUsComponent, canActivate: [Anonymous]},
   { path: 'about', component: AboutComponent, canActivate: [Anonymous]},
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
 
 ];
 

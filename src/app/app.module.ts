@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutComponent } from './components/about/about.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -31,7 +32,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     VerifyEmailComponent,
     LandingComponent,
     AboutComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
