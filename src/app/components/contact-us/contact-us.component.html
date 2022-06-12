@@ -1,0 +1,43 @@
+<div class="header">
+  <a routerLink ="" class="logo" >Logo</a>
+  <div class="header-right">
+    <a  routerLink ="/home" routerLinkActive ="active">Home</a>
+    <a routerLink ="/contact" routerLinkActive="active">Contact</a>
+    <a routerLink ="/about" routerLinkActive="active">About</a>
+    <a routerLink ="/register-user" routerLinkActive="active">Sign Up</a>
+    <a routerLink="/sign-in" routerLinkActive="active">Sign In</a>
+  </div>
+</div>
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock" [formGroup]="contactForm">
+      <h3>Contact Us</h3>
+      <hr>
+      <div class="formGroup">
+        <label for="fname">First Name</label>
+        <input type="text" class="formControl" formControlName="firstName" placeholder="First Name" #firstName required>
+      </div>
+      <div class="formGroup">
+        <label for="lname">Last Name</label>
+        <input type="text" class="formControl" formControlName="lastName" placeholder="Last Name" #lastName required>
+      </div>
+      <div class="formGroup">
+        <label for="email">Email</label>
+        <input type="email" class="formControl" formControlName="email" placeholder="abc@gmail.com" #email required>
+      </div>
+      <div class="formGroup">
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" formControlName="description" placeholder="Write something.." style="height:200px" required></textarea>
+        <!-- <input type="text" class="formControl" placeholder="Subject" #subject required> -->
+      </div>
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input [disabled]="contactForm.invalid" type="submit" value="Submit" (click)="submit(contactForm.value)">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p> &copy; copyright 2022 designed by Bhuwan Paneru </p>
+</div>

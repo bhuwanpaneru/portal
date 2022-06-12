@@ -1,3 +1,6 @@
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AboutComponent } from './components/about/about.component';
+import { LandingComponent } from './components/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -10,12 +13,16 @@ import { AnonymousGuard as Anonymous } from './shared/guard/anonymous.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: LandingComponent, canActivate: [Anonymous] },
   { path: 'sign-in', component: SignInComponent, canActivate: [Anonymous] },
   { path: 'register-user', component: SignUpComponent, canActivate: [Anonymous] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [Anonymous] },
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [Anonymous]},
+  { path: 'contact', component: ContactUsComponent, canActivate: [Anonymous]},
+  { path: 'about', component: AboutComponent, canActivate: [Anonymous]},
+
 ];
 
 @NgModule({
