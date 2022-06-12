@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [Anonymous]},
   { path: 'contact', component: ContactUsComponent, canActivate: [Anonymous]},
   { path: 'about', component: AboutComponent, canActivate: [Anonymous]},
-  // { path: '**', component: LandingComponent, canActivate: [Anonymous] },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 
 ];
 
