@@ -14,7 +14,7 @@ import { AnonymousGuard as Anonymous } from './shared/guard/anonymous.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'home', component: LandingComponent, canActivate: [Anonymous] },
   { path: 'sign-in', component: SignInComponent, canActivate: [Anonymous] },
   { path: 'register-user', component: SignUpComponent, canActivate: [Anonymous] },
