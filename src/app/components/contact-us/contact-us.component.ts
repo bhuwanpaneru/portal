@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   FormBuilder,
   FormGroup,
@@ -21,7 +22,7 @@ export class ContactUsComponent implements OnInit {
   title: string = 'Contact form';
   contactForm: FormGroup;
   private ngUnsubscribe: Subject < any > = new Subject();
-  constructor(private fb: FormBuilder, ) {
+  constructor(private fb: FormBuilder, private firestore: AngularFirestore) {
     this.contactForm = this.fb.group({
       firstName: [
         '',
@@ -46,7 +47,6 @@ export class ContactUsComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(50),
         ],
       ],
     });
@@ -54,8 +54,19 @@ export class ContactUsComponent implements OnInit {
 
   ngOnInit() {}
 
+  _newId:any;
   submit(value: any) {
-    alert(` ${value.firstName} ${value.lastName} ${value.email} ${value.description},  Now this form is demo form I'll integrated with database,  Thank you`);
+    let date = new Date('dd:mm:yyyy HH:mm:ss');
+    this.firestore.collection('contact-form').doc(this._newId).set({firstName:this.contactForm.value.firstName,lastName:this.contactForm.value.lastName,email:this.contactForm.value.email, description:this.contactForm.value.description})
+      // field: this.contactForm.value.firstName
+  .then(res => {
+    alert(`Thanks for contacting us through our portal. We resolved your inquiry as soon  as possible.`);
+      console.log(res);
+      this.contactForm.reset();
+  })
+  .catch(e => {
+      console.log(e);
+  })
   }
 
   isFieldInvalid(fieldName: string) {
