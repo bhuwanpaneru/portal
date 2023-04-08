@@ -89,7 +89,7 @@ export class AuthService {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
         this.router.navigate(['dashboard']);
-        location.reload();
+        lwindow.location.reload();
       }
     });
   }
@@ -103,7 +103,7 @@ export class AuthService {
         localStorage.getItem('user');
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
-          location.reload();
+          window.location.reload();
         });
       })
       .catch((error) => {
